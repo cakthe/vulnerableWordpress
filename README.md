@@ -17,6 +17,7 @@
 This Plugin is designed to manage sports leagues and display them on your blog.
 
 Version : 4.2-RC1.3
+
 Author  : Kolja Schleich, LaMonte Forthun
 
 #### Features
@@ -47,7 +48,8 @@ Spider Video Player supports types of videos, such as Http, YouTube, Vimeo and r
 The WordPress plugin comes with the image watermark support for the video player (in Flash mode). You can choose to modify the parameters of the watermark image, including the size, position and border spacing.
 
 Version: 1.5.20
-Author: WebDorado
+
+Author: [WebDorado](https://web-dorado.com/)
 
 ## 3. Instalasi
 
