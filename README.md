@@ -10,9 +10,11 @@
 
 ### 2.3. SQL Injection
 
-### 2.4. League Manager
+### 2.4. WordPress Plugins
 
-#### Deskripsi
+#### 2.4.1. League Manager
+
+##### Deskripsi
 
 This Plugin is designed to manage sports leagues and display them on your blog.
 
@@ -20,7 +22,7 @@ Version : 4.2-RC1.3
 
 Author  : Kolja Schleich, LaMonte Forthun
 
-#### Features
+##### Features
 
 - easy adding of teams and matches
 - fancy slideshows of previous or next matches in combination with the Fancy Slideshow Plugin)
@@ -35,9 +37,9 @@ Author  : Kolja Schleich, LaMonte Forthun
 - dynamic match statistics
 - Championship mode with preliminary and k/o rounds
 
-### 2.5. Spider Video Player
+#### 2.4.2. Spider Video Player
 
-#### Deskripsi
+##### Deskripsi
 
 Spider Video Player is highly customizable. You can choose to customize the library, videos and frames background color adjustment features for the video player, the height and width of the video player, transparency level for the video player buttons and more.
 
@@ -51,8 +53,26 @@ Version: 1.5.20
 
 Author: [WebDorado](https://web-dorado.com/)
 
+### 2.5. SQL Injection Testing Tools for WordPress
+
+#### 2.5.1. sqlmap
+
+sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. It comes with a powerful detection engine, many niche features for the ultimate penetration tester and a broad range of switches lasting from database fingerprinting, over data fetching from the database, to accessing the underlying file system and executing commands on the operating system via out-of-band connections.
+
+#### 2.5.2. WPScan
+
+WPScan is a WordPress vulnerability scanner written in Ruby. It is sponsored by Sucuri and hosted on github. Using its security vulnerability database for WordPress core, plugins and themes it will provide a report on your site’s known security problems which can be exploited by hackers.
+
 ## 3. Instalasi
 
 ## 4. Uji Penetrasi
 
 ## 5. Kesimpulan dan Saran
+
+## 6. Sumber
+
+> http://sqlmap.org/
+> https://guides.wp-bullet.com/install-wpscan-ubuntu-16-04-wordpress-vulnerability-scanning/
+> https://firstsiteguide.com/tools/hacked-dangerous-vulnerable-wordpress-plugins/
+> https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
+> https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
