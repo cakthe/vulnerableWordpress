@@ -67,43 +67,70 @@ sqlmap is an open source penetration testing tool that automates the process of 
 
 ## 3.1. WordPress
 
-  1. Install dan konfigurasi web server beserta PHP dan ekstensi yang dibutuhkan
-  
-  Web server yang digunakan di sini adalah Apache2. Untuk melakukan instalasi gunakan perintah:
-  
-  ```
-  sudo apt-get update
-  sudo apt-get install apache2 php php-mcrypt php-mysql php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc libapache2-mod-php
-  ```
-  Setelah dilakukan instalasi, maka selanjutnya adalah konfigurasi file `/etc/apache2/apache2.conf` dengan menambahkan:
-  ```
-  . . .
-  
-  <Directory /var/www/html/>
-  
-    AllowOverride All
-  
-  </Directory>
-  
-  . . .
-  ```
-  Kemudian simpan perubahan. Lalu aktifkan modul rewrite apache dengan perintah:
-  ```
-  sudo a2enmod rewrite
-  ```
-  
-  2. Install DBMS
-  
-  Sistem manajemen database yang digunakan adalah MySQL Server
-  
-  ```
-  sudo apt-get install mysql-server
-  ```
-  Selama instalasi, sistem akan meminta password untuk user root pada mysql.
-  
-  Setelah 
-  
-  3. 
+###### 1. Install dan konfigurasi DBMS
+
+Sistem manajemen database yang digunakan adalah MySQL Server. Instalasi dilakukan dengan perintah:
+```
+sudo apt-get install mysql-server
+```
+Selama instalasi, sistem akan meminta password untuk user root pada mysql.
+
+Setelah MySQL server terinstal, selanjutnya masuk ke console mysql dengan perintah:
+```
+mysql -uroot -p
+```
+Buat database untuk wordpress sekaligus username khusus yang nanti akan digunakan oleh WordPress:
+```
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO 'username'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+###### 2. Install dan konfigurasi web server beserta PHP dan ekstensi yang dibutuhkan
+
+Web server yang digunakan di sini adalah Apache2. Untuk melakukan instalasi gunakan perintah:
+```
+sudo apt-get update
+sudo apt-get install apache2 php php-mcrypt php-mysql php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc libapache2-mod-php
+```
+Setelah dilakukan instalasi, buka file `/etc/apache2/mods-enabled/dir.conf`. Temukan baris berikut:
+```
+<IfModule mod_dir.c>
+  DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+</IfModule>
+```
+Lalu ubah baris tersebut menjadi seperti ini agar web service membaca `index.php` lebih dulu daripada `index.html`:
+```
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+```
+
+Terdapat opsi tambahan jika ingin file `.htaccess` yang ada di direktori aplikasi WordPress diberlakukan. Yaitu dengan menambahkan konfigurasi pada file `/etc/apache2/apache2.conf`:
+```
+. . .
+
+<Directory /var/www/html/>
+  AllowOverride All
+</Directory>
+
+. . .
+```
+Kemudian simpan perubahan. Agar fungsi permalink WordPress dapat bekerja, aktifkan module rewrite apache:
+```
+sudo a2enmod rewrite
+```
+Jika semua konfigurasi yang dibutuhkan telah dilakukan, langkah terakhir adalah melakukan restart service apache:
+```
+sudo service apache2 restart
+```
+
+###### 3. Download WordPress
+
+Setelah server terkonfigurasi, langkah selanjutnya adalah *set up* WordPress.
+
+Pertama
 
 ## 3.2. Plugin WordPress
 
