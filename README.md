@@ -10,7 +10,7 @@
 
 ### 2.3. SQL Injection
 
-### 2.4. WordPress Plugins
+### 2.4. Plugin WordPress
 
 #### 2.4.1. League Manager
 
@@ -55,15 +55,63 @@ Author: [WebDorado](https://web-dorado.com/)
 
 ### 2.5. SQL Injection Testing Tools for WordPress
 
-#### 2.5.1. sqlmap
-
-sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. It comes with a powerful detection engine, many niche features for the ultimate penetration tester and a broad range of switches lasting from database fingerprinting, over data fetching from the database, to accessing the underlying file system and executing commands on the operating system via out-of-band connections.
-
-#### 2.5.2. WPScan
+#### 2.5.1. WPScan
 
 WPScan is a WordPress vulnerability scanner written in Ruby. It is sponsored by Sucuri and hosted on github. Using its security vulnerability database for WordPress core, plugins and themes it will provide a report on your site’s known security problems which can be exploited by hackers.
 
+#### 2.5.2. sqlmap
+
+sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. It comes with a powerful detection engine, many niche features for the ultimate penetration tester and a broad range of switches lasting from database fingerprinting, over data fetching from the database, to accessing the underlying file system and executing commands on the operating system via out-of-band connections.
+
 ## 3. Instalasi
+
+## 3.1. WordPress
+
+  1. Install dan konfigurasi web server beserta PHP dan ekstensi yang dibutuhkan
+  
+  Web server yang digunakan di sini adalah Apache2. Untuk melakukan instalasi gunakan perintah:
+  
+  ```
+  sudo apt-get update
+  sudo apt-get install apache2 php php-mcrypt php-mysql php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc libapache2-mod-php
+  ```
+  Setelah dilakukan instalasi, maka selanjutnya adalah konfigurasi file `/etc/apache2/apache2.conf` dengan menambahkan:
+  ```
+  . . .
+  
+  <Directory /var/www/html/>
+  
+    AllowOverride All
+  
+  </Directory>
+  
+  . . .
+  ```
+  Kemudian simpan perubahan. Lalu aktifkan modul rewrite apache dengan perintah:
+  ```
+  sudo a2enmod rewrite
+  ```
+  
+  2. Install DBMS
+  
+  Sistem manajemen database yang digunakan adalah MySQL Server
+  
+  ```
+  sudo apt-get install mysql-server
+  ```
+  Selama instalasi, sistem akan meminta password untuk user root pada mysql.
+  
+  Setelah 
+  
+  3. 
+
+## 3.2. Plugin WordPress
+
+## 3.3. *SQL Injection Testing Tools*
+
+## 3.3.1. WPScan
+
+## 3.3.2. sqlmap
 
 ## 4. Uji Penetrasi
 
@@ -71,8 +119,12 @@ WPScan is a WordPress vulnerability scanner written in Ruby. It is sponsored by 
 
 ## 6. Sumber
 
-> http://sqlmap.org/
-> https://guides.wp-bullet.com/install-wpscan-ubuntu-16-04-wordpress-vulnerability-scanning/
-> https://firstsiteguide.com/tools/hacked-dangerous-vulnerable-wordpress-plugins/
-> https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
-> https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
+http://sqlmap.org/
+
+https://guides.wp-bullet.com/install-wpscan-ubuntu-16-04-wordpress-vulnerability-scanning/
+
+https://firstsiteguide.com/tools/hacked-dangerous-vulnerable-wordpress-plugins/
+
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
+
+https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
