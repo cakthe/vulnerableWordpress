@@ -138,7 +138,36 @@ Pertama
 
 ## 3.3.1. WPScan
 
+Sebelum menggunakan WPScan, kita pastikan terlebih dahulu sistem *host attacker* sudah terinstall dependensi-dependensi yang dibutuhkan WPScan. Untuk itu lakukan:
+```
+sudo apt-get update
+sudo apt-get install curl git libcurl4-openssl-dev make zlib1g-dev gawk g++ gcc libreadline6-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config ruby ruby-bundler ruby-dev
+```
+Setelah itu kita akan meng-*clone* aplikasi WPScan. Misalkan kita letakkan aplikasi ini di direktori home user:
+```
+cd ~
+git clone https://github.com/wpscanteam/wpscan.git
+```
+Masuk ke folder aplikasi WPScan dan install dependensi ruby:
+```
+cd wpscan
+bundle install --without test
+```
+Disarankan memperbarui WP Scan Vulnerability Database dengan perintah:
+```
+ruby wpscan.rb --update
+```
+Kemudian untuk menjalankan pemindaian website WordPress bisa dilakukan dengan:
+```
+ruby wpscan.rb --url https://[nama_domain_web_atau_alamat_ip_web]
+```
+
 ## 3.3.2. sqlmap
+
+Untuk menggunakan sqlmap, cukup dipastikan bahwa *host attacker* sudah terinstall git, lalu jalankan:
+```
+git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
+```
 
 ## 4. Uji Penetrasi
 
