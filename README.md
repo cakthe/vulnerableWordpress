@@ -130,9 +130,91 @@ sudo service apache2 restart
 
 Setelah server terkonfigurasi, langkah selanjutnya adalah *set up* WordPress.
 
-Pertama
+Pertama unduh file WordPress ke dalam direktori yang *writable*, misalkan `/tmp`:
+```
+cd /tmp
+curl -O https://wordpress.org/latest.tar.gz
+```
+Ekstrak isinya:
+```
+tar xzvf latest.tar.gz
+```
+Kemudian salin file contoh konfigurasi agar menjadi file konfigurasi yang nanti akan benar-benar digunakan:
+```
+cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
+```
+Sekalian buat folder `update` agar ketika WordPress akan melakukan pembaruan tidak terkendala masalah *permission*:
+```
+mkdir /tmp/wordpress/wp-content/upgrade
+```
+Lalu salin keseluruhan direktori worpress ke dalam `/var/www/html`:
+```
+sudo cp -a /tmp/wordpress/. /var/www/html
+```
+
+###### 4. Konfigurasi direktori WordPress
+
+Berikan *ownership* kepada user sudo dalam grup `www-data` yang dimiliki terhadap keseluruhan isi direktori WordPress:
+```
+sudo chown -R [usersudo]:www-data /var/www/html
+```
+Atur supaya semua file baru tetap mengikuti *ownership* direktori induknya:
+```
+sudo find /var/www/html -type d -exec chmod g+s {} \;
+```
+Berikan grup `www-data` akses *write* ke direktori `wp-content` agar bisa mengubah tema dan plugin WordPress:
+```
+sudo chmod g+w /var/www/html/wp-content
+sudo chmod -R g+w /var/www/html/wp-content/themes
+sudo chmod -R g+w /var/www/html/wp-content/plugins
+```
+
+###### 5. Setel file konfigurasi WordPress
+
+Untuk mengamankan proses instalasi WordPress nanti, jalankan:
+```
+curl -s https://api.wordpress.org/secret-key/1.1/salt/
+```
+Kemudian hasil yang keluar disalin ke dalam file `/var/www/html/wp-config.php` pada bagian:
+```
+. . .
+
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
+
+. . .
+```
+Di file yang sama, ubah beberapa detil lagi:
+```
+. . .
+
+define('DB_NAME', 'wordpress');
+
+/** MySQL database username */
+define('DB_USER', 'username');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'password');
+
+. . .
+
+/** Tambahkan baris ini */
+define('FS_METHOD', 'direct');
+```
+
+###### 6. Install WordPress lewat web-interface
+
+Lewat browser, akses `http://[ip_server_wordpress]]`, kemudian ikuti proses sampai selesai. Pastikan user dan password user WordPress diingat betul.
 
 ## 3.2. Plugin WordPress
+
+Setelah login sebagai user WordPress lewat browser, pada bagian sidebar akan ada menu `Plugins`. Pilih menu tersebut dan sub-menu `Add new`, lalu cari plugin yang ingin diinstall. Setelah ketemu, cukup klik `Install Now` dan `Activate` setelah terinstall.
 
 ## 3.3. *SQL Injection Testing Tools*
 
@@ -170,6 +252,12 @@ git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
 ```
 
 ## 4. Uji Penetrasi
+
+### 4.1. WPScan
+
+
+
+### 4.2. sqlmap
 
 ## 5. Kesimpulan dan Saran
 
