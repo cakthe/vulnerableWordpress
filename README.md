@@ -10,7 +10,7 @@ Ubuntu adalah sistem operasi berbasis Linux Debian. Ubuntu adalah distribusi yan
 
 ### 2.2. WordPress
 
-Wordpress adalah _content management system_ berbasis PHP dan MySQL. Wordpress adalah CMS yang paling populer dan memiliki lebih dari 45000 plugin. Wordpress digunakan untuk berbagai kebutuhan, seperti website profil instansi, jual beli, galeri, galeri, dan forum.
+Wordpress adalah _content management system_ berbasis PHP dan MySQL. Wordpress adalah CMS yang paling populer dan memiliki lebih dari 45000 plugin. Wordpress digunakan untuk berbagai kebutuhan, seperti website profil instansi, jual beli, galeri, dan forum.
 
 ### 2.3. SQL Injection
 
