@@ -278,3 +278,9 @@ https://firstsiteguide.com/tools/hacked-dangerous-vulnerable-wordpress-plugins/
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
 
 https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04
+
+https://wordpress.org/
+
+https://distrowatch.com/
+
+https://www.owasp.org/index.php/SQL_Injection
