@@ -6,9 +6,15 @@
 
 ### 2.1. Ubuntu Server Xenial 16.04
 
+Ubuntu adalah sistem operasi berbasis Linux Debian. Ubuntu adalah distribusi yang paling populer karena dukungan serta komunitasnya. Sistem operasi ini tidak berbayar alias gratis. Ubuntu Xenial adalah salah satu versi Ubuntu yang rilis pada April 2016.
+
 ### 2.2. WordPress
 
+Wordpress adalah _content management system_ berbasis PHP dan MySQL. Wordpress adalah CMS yang paling populer dan memiliki lebih dari 45000 plugin. Wordpress digunakan untuk berbagai kebutuhan, seperti website profil instansi, jual beli, galeri, galeri, dan forum.
+
 ### 2.3. SQL Injection
+
+SQL Injection adalah teknik serangan dengan cara memasukkan query SQL dari _client_. Jika berhasil, serangan ini dapat membaca, memperbaharui, dan menghapus database yang terdapat pada server. 
 
 ### 2.4. Plugin WordPress
 
