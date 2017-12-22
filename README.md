@@ -216,11 +216,15 @@ define('FS_METHOD', 'direct');
 
 ###### 6. Install WordPress lewat web-interface
 
-Lewat browser, akses `http://[ip_server_wordpress]]`, kemudian ikuti proses sampai selesai. Pastikan user dan password user WordPress diingat betul.
+Lewat browser, akses `http://[ip_server_wordpress]]`, kemudian ikuti proses sampai selesai. Pastikan user dan password user WordPress diingat betul. Halaman beranda setelah berhasil melakukan instalasi adalah semacam ini:
+
+![alt text](./wp_home.JPG)
 
 ## 3.2. Plugin WordPress
 
 Setelah login sebagai user WordPress lewat browser, pada bagian sidebar akan ada menu `Plugins`. Pilih menu tersebut dan sub-menu `Add new`, lalu cari plugin yang ingin diinstall. Setelah ketemu, cukup klik `Install Now` dan `Activate` setelah terinstall.
+
+![alt text](./wp_plugininstall.JPG)
 
 ## 3.3. *SQL Injection Testing Tools*
 
@@ -261,11 +265,44 @@ git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
 
 ### 4.1. WPScan
 
+Pertama yang harus dilakukan adalah melakukan instalasi plugin League Manager dan Spider Video Player. Kami juga melakukan instalasi beberapa plugin lain yang menurut sumber yang kami rujuk merupakan plugin yang rentan: Google Doc Embedder dan NextGEN Gallery. Kemudian dari terminal VM attacker kami menjalankan perintah:
+```
+$ ruby wpscan.rb --url [alamat_target]
+```
 
+Dalam kasus ini `[alamat_target]` adalah alamat IP VM target atau `http://10.151.36.199`. Hasil yang muncul ternyata terdapat vulnerability pada Wordpress itu sendiri dan pada plugin yang telah diinstall. Untuk celah pada Wordpress:
+
+* Beberapa direktori rentan karena directory-listing masih aktif.
+* Rentan header injection pada saat melakukan reset password.
+* Rentan unggahan file javascript, namun dari hasil wpscan sudah teratasi jika versi Wordpress diperbarui.
+
+![alt text](./wpscan1.JPG)
+
+* RSS and Atom Feed Escaping (namun dari hasil wpscan sudah teratasi jika versi Wordpress diperbarui).
+* HTML Language Attribute Escaping (namun dari hasil wpscan sudah teratasi jika versi Wordpress diperbarui).
+* 'newbloguser' Key Weak Hashing (namun dari hasil wpscan sudah teratasi jika versi Wordpress diperbarui).
+
+![alt text](./wpscan2.JPG)
+
+Sedangkan celah pada plugin yang ditemukan adalah pada League Manager dan Spider Video Player. Tetapi untuk Google Doc Embedder dan NextGEN Gallery tidak ditemukan celah oleh wpscan:
+
+* League Manager: directory-listing masih aktif
+* League Manager: Multiple Parameter XSS
+* League Manager: SQL Injection
+* League Manager: Unauthenticated SQL Injection
+
+![alt text](./wpscan3.JPG)
+
+* Spider Video Player: SQL Injection
+* Spider Video Player: Reflected Cross-Site Scripting
+
+![alt text](./wpscan4.JPG)
 
 ### 4.2. sqlmap
 
 ## 5. Kesimpulan dan Saran
+
+Jika ingin menjadikan Wordpress sebagai platform untuk situs web yang digunakan, sebaiknya dilakukan berbagai pengaturan tambahan untuk menutup celah-celah yang terlalu mudah terekspos seperti directory-listing dan SQL Injection. Terlebih lagi dengan berbagai macam plugin yang akan diinstall yang tentunya menambah jumlah lubang yang harus ditutup. Begitu juga pihak yang mengurus web harus rajin melakukan pembaruan versi Wordpress dan plugin-pluginnya.
 
 ## 6. Sumber
 
