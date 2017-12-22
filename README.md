@@ -55,9 +55,42 @@ Spider Video Player supports types of videos, such as Http, YouTube, Vimeo and r
 
 The WordPress plugin comes with the image watermark support for the video player (in Flash mode). You can choose to modify the parameters of the watermark image, including the size, position and border spacing.
 
-Version: 1.5.20
+Version : 1.5.20
 
-Author: [WebDorado](https://web-dorado.com/)
+Author  : [WebDorado](https://web-dorado.com/)
+
+#### 2.4.3. User Access Manager
+
+##### Deskripsi
+
+The “User Access Manager”-plugin for WordPress allows you to manage the access of your content. This is useful if you need a member area, a private section at your blog or you want that other people can write at your blog but not everywhere. Including all post type (post, pages etc.), taxonomies (categories etc.) and files by creating user groups. Just assign the content you want to restrict und and your registered users which should have a access to a group. From now on the content is only accessible and writable for the specified group.
+
+Version : 2.1.10
+
+Author  : Alexander Schneider
+
+#### 2.4.4. Advanced Access Manager
+
+##### Features
+
+- [free] Backend Lockdown. Restrict access to your website backend side for any user or role.
+- [free] Secure Login Widget & Shortcode. Drop AJAX login widget or shortcode anywhere on your website.
+- [limited] Content Access. Very granular access to unlimited number of post, page or custom post type (19 different options). With premium Plus Package extension also manage access to hierarchical taxonomies or setup the default access to all post types and taxonomies.
+- [free] Content Filter. Filter or replace parts of your content with AAM shortcodes.
+- [free] Login/Logout Redirects. Define custom login and logout redirect for any user or role.
+- [free] 404 Redirect. Redefine where user should be redirected when page does not exist.
+- [free] Access Denied Redirect. Define custom redirect for any role, user or visitors when access is denied for restricted area on your website.
+- [free] Manage Roles & Capabilities. Manage all your WordPress role and capabilities.
+- [free] Manage Backend Menu. Manage access to the backend menu for any user or role.
+- [free] Manage Metaboxes and Widgets. Filter out restricted or unnecessary metaboxes and widgets on both frontend and backend for any user, role or visitors.
+- [paid] Manage Access Based On Geo Location or IP. Manage access to your website for all visitors based on referred host, IP address or geographical location.
+- [paid] Monetize Access To You Content. Start selling access to your website content with premium E-Commerce extension.
+- [free] Multisite Support. Sync access settings across your network or even restrict none-members from accessing one of your sites.
+- etc.
+
+Version: 5.0.2
+
+Author: Vasyl Martyniuk
 
 ### 2.5. SQL Injection Testing Tools for WordPress
 
@@ -265,7 +298,7 @@ git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git
 
 ### 4.1. WPScan
 
-Pertama yang harus dilakukan adalah melakukan instalasi plugin League Manager dan Spider Video Player. Kami juga melakukan instalasi beberapa plugin lain yang menurut sumber yang kami rujuk merupakan plugin yang rentan: Google Doc Embedder dan NextGEN Gallery. Kemudian dari terminal VM attacker kami menjalankan perintah:
+Pertama yang harus dilakukan adalah melakukan instalasi plugin League Manager dan Spider Video Player. Kami juga melakukan instalasi beberapa plugin lain yang menurut sumber yang kami rujuk merupakan plugin yang rentan: User Access Manager dan Advanced Access Manager. Kemudian dari terminal VM attacker kami menjalankan perintah:
 ```
 $ ruby wpscan.rb --url [alamat_target]
 ```
@@ -284,7 +317,7 @@ Dalam kasus ini `[alamat_target]` adalah alamat IP VM target atau `http://10.151
 
 ![alt text](./wpscan2.JPG)
 
-Sedangkan celah pada plugin yang ditemukan adalah pada League Manager dan Spider Video Player. Tetapi untuk Google Doc Embedder dan NextGEN Gallery tidak ditemukan celah oleh wpscan:
+Sedangkan celah pada plugin yang ditemukan oleh wpscan adalah:
 
 * League Manager: directory-listing masih aktif
 * League Manager: Multiple Parameter XSS
@@ -293,10 +326,19 @@ Sedangkan celah pada plugin yang ditemukan adalah pada League Manager dan Spider
 
 ![alt text](./wpscan3.JPG)
 
+* Spider Video Player: directory-listing masih aktif
 * Spider Video Player: SQL Injection
 * Spider Video Player: Reflected Cross-Site Scripting
 
 ![alt text](./wpscan4.JPG)
+
+* User Access Manager: directory-listing masih aktif
+
+![alt text](./wpscan5.JPG)
+
+* Advanced Access Manager: directory-listing masih aktif
+
+![alt text](./wpscan6.JPG)
 
 ### 4.2. sqlmap
 
